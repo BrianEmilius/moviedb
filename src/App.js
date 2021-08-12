@@ -1,7 +1,9 @@
 import Index from "./views/index";
 import SearchContext from "./store/searchContext";
 import { useState } from "react";
+import { Router } from "@reach/router";
 import "./App.css"
+import Movie from "./views/movie";
 
 function App() {
 	var searchState = useState([]);
@@ -9,8 +11,10 @@ function App() {
 	return (
 		<SearchContext.Provider value={searchState}>
 			<div className="App">
-				<h1>The MovieDB</h1>
-				<Index />
+				<Router>
+					<Index path="/" />
+					<Movie path="/movie/:id" />
+				</Router>
 			</div>
 		</SearchContext.Provider>
 	);

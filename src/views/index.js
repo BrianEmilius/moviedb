@@ -2,6 +2,7 @@ import Searchbar from "../components/searchbar";
 import searchContext from "../store/searchContext";
 import { useContext } from "react";
 import Result from "../components/result";
+import { Container } from "@material-ui/core";
 
 export default function Index() {
 	var [results] = useContext(searchContext);
@@ -9,7 +10,9 @@ export default function Index() {
 	return (
 		<>
 			<Searchbar />
-			{results.map(result => <Result key={result.imdbID} imdbID={result.imdbID} title={result.Title} year={result.Year} poster={result.Poster} />)}
+			<Container>
+				{results.map(result => <Result key={result.imdbID} imdbID={result.imdbID} title={result.Title} year={result.Year} poster={result.Poster} />)}
+			</Container>
 		</>
 	)
 }
