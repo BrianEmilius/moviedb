@@ -19,8 +19,6 @@ export default function Movie({id}) {
 			})
 				.then(response => setResult(response.data));
 	}, [id])
-
-	console.log(result)
 	return (
 		<>
 		<Searchbar />
@@ -33,7 +31,7 @@ export default function Movie({id}) {
 			<Typography variant="body1">
 				Actors: {result?.Actors}
 			</Typography>
-			<img src={result?.Poster} />
+			<img src={result?.Poster} alt={`Movie poster for ${result?.Title}`} />
 			<Typography variant="body2">
 				{result?.Plot}
 			</Typography>

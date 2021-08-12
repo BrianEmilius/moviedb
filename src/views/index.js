@@ -11,7 +11,7 @@ export default function Index() {
 		<>
 			<Searchbar />
 			<Container>
-				{results.map(result => <Result key={result.imdbID} imdbID={result.imdbID} title={result.Title} year={result.Year} poster={result.Poster} />)}
+				{results.map(result => <Result key={result.imdbID + result.Title} imdbID={result.imdbID} title={result.Title} year={result.Year} poster={result.Poster} />)}
 			</Container>
 		</>
 	)
