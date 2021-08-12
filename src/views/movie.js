@@ -18,7 +18,7 @@ export default function Movie({id}) {
 				}
 			})
 				.then(response => setResult(response.data));
-	}, [])
+	}, [id])
 
 	console.log(result)
 	return (
