@@ -1,5 +1,5 @@
 import searchContext from "../store/searchContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { InputBase, AppBar, Toolbar, Typography } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
@@ -7,14 +7,14 @@ import "./searchbar.css";
 import { Link, navigate } from "@reach/router";
 
 export default function Searchbar() {
-	var setResults = useContext(searchContext)[1];
+	var [results, setResults] = useContext(searchContext);
+	var [page, setPage] = useState(1);
 
-	function handleSubmit(e) {
-		e.preventDefault();
+	function getNextPage(e) {
 		axios.get(`https://movie-database-imdb-alternative.p.rapidapi.com`, {
 			params: {
 				s: e.target.search.value,
-				page: 1,
+				page: page,
 				r: "json"
 			},
 			headers: {
@@ -23,9 +23,15 @@ export default function Searchbar() {
 				}
 			})
 				.then(response => {
-					setResults(response.data.Search);
+					setResults([...results, ...response.data.Search]);
+					setPage(page + 1);
 					navigate("/");
 				});
+	}
+
+	function handleSubmit(e) {
+		e.preventDefault();
+		getNextPage(e);
 	}
 
 	return (
