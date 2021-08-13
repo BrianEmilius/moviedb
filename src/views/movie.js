@@ -18,7 +18,10 @@ export default function Movie({id}) {
 				}
 			})
 				.then(response => setResult(response.data));
-	}, [id])
+	}, [id]);
+
+	console.log(result)
+
 	return (
 		<>
 		<Searchbar />
