@@ -17,7 +17,9 @@ function App() {
 	function displayNotification() {
 		if (Notification.permission === 'granted') {
 			navigator.serviceWorker.getRegistration().then(function(reg) {
-				reg.showNotification('Hello world!');
+				reg.showNotification('Hello world!', {
+					vibrate: [200, 100, 200, 500, 100, 300, 200, 400, 2000, 50]
+				});
 			});
 		}
 	}
