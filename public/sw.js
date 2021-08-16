@@ -1,6 +1,6 @@
 // src/sw.js
 
-const CACHE_NAME = "moviedb_cache_v4";
+const CACHE_NAME = "moviedb_cache_v5";
 var urlsToCache = [
 	"/",
 	"/index.html",
