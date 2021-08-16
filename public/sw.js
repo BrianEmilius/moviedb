@@ -1,8 +1,10 @@
 // src/sw.js
 
-const CACHE_NAME = "moviedb_cache_v1";
+const CACHE_NAME = "moviedb_cache_v4";
 var urlsToCache = [
-	"/"
+	"/",
+	"/index.html",
+	"/static/js/**.js"
 ];
 
 self.addEventListener("install", function(event) {
